@@ -1,0 +1,18 @@
+@if(currentUser)
+{
+  <div class="container">
+    <header class="jumbotron">
+      <strong>{{currentUser.username}}</strong> Profile
+    </header>
+    <p>
+      <strong>Email:</strong>
+      {{currentUser.email}}
+    </p>
+    <strong>Roles:</strong>
+    <ul>
+      {{currentUser.roles}}
+    </ul>
+  </div>
+} @else {
+  <p>Please login.</p>
+}

@@ -1,0 +1,51 @@
+<form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+  <div style="display: flex; justify-content: start; flex-direction: column;">
+    <div>
+    <label>
+      Title:
+      <input formControlName="title" placeholder="Event Title">
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Description:
+      <input formControlName="description" placeholder="Event Description">
+    </label>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="startDate" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+      <mat-datepicker #startDate></mat-datepicker>
+    </mat-form-field>
+
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="endDate" formControlName="endDate">
+      <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+      <mat-datepicker #endDate></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+      <ng-container formArrayName="todos">
+        <ng-container *ngFor="let todoForm of todos.controls; let i = index">
+          <div class="todo-form-row" [formGroupName]="i">
+              <input matInput formControlName="action" placeholder="Lesson Title">
+          </div>
+        </ng-container>
+      </ng-container>
+  </div>
+  </div>
+
+
+  <button type="button" mat-mini-fab (click)="addTodo()">
+    Add
+</button>
+
+
+  <button type="submit" [disabled]="eventForm.invalid">Send</button>
+
+</form>

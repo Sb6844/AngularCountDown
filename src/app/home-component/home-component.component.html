@@ -1,0 +1,22 @@
+
+  <div  *ngFor="let event of events">
+    <app-count-down [startDate]="event.startDate" [endDate]="event.endDate" [title]="event.title" [description]="event.description"></app-count-down>
+    <ul>
+      <li><h3>Todo List</h3></li>
+      <li *ngFor="let todos of event.eventTodos">
+        {{todos.action}}
+      </li>
+    </ul>
+    <ul>
+      <li><a routerLink="/edit-event/{{event.id}}" routerLinkActive="active" ariaCurrentWhenActive="page">Edit Event</a></li>
+      <li><button (click)="deleteEvent(event.id)">Delete Event</button></li>
+    </ul>
+  </div>
+
+
+@if (!events) {
+  <div>No Events</div>
+}
+
+
+

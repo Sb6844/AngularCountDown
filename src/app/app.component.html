@@ -1,0 +1,50 @@
+<h1>Angular Router App</h1>
+<nav>
+  <ul>
+    @if(isLoggedIn) {
+    <li><a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
+    <li><a routerLink="/create-event" routerLinkActive="active" ariaCurrentWhenActive="page">Create Event</a></li>
+    } @else {
+      <li><a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
+    }
+
+    @if(showAdminBoard) {
+      <li><a routerLink="/admin">Admin Board</a></li>
+    }
+    @if(showModeratorBoard)
+    {
+      <li><a class="nav-link" routerLink="mod">Moderator Board</a></li>
+    }
+
+    @if(isLoggedIn) {
+      <li>
+        <a href="/user" class="nav-link" routerLink="user">User</a>
+      </li>
+    }
+  </ul>
+
+  @if(!isLoggedIn)
+  {
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+  } @else {
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{username}}</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="logout()"class="nav-link">LogOut</a>
+      </li>
+    </ul>
+  }
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

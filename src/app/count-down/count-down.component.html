@@ -1,0 +1,55 @@
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{title}}</mat-card-title>
+      <!-- <h1>{{conditionalCount()}}</h1>
+
+      <button (click)="viewCalculator()">Click to increase views</button>
+      <button (click)="  settozero()">SEt to zero</button> -->
+      <mat-card-subtitle>{{description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;">
+    <div style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;">
+      <h3>{{totalInWeeks}} weeks total</h3>
+    </div>
+    <div style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;">
+      <h3 *ngIf="remainingTimeInWeeks > 0">{{remainingTimeInWeeks}} <b>weeks</b> remaining</h3>
+      <h3 *ngIf="remainingTimeInWeeks <= 0 && remainingTimeInHours > 24">{{remainingTimeInDays}} <b>days</b> remaining</h3>
+      <h3 *ngIf="remainingTimeInWeeks <= 0 && remainingTimeInDays <= 0">{{remainingTimeInHours}} <b>hours</b> remaining</h3>
+    </div>
+    <div style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;">
+      <div style=" display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-basis: 100%;">
+        <h4>Start Date: {{startDate | date: 'shortDate'}}</h4>
+        <h4>End Date: {{endDate | date: 'shortDate'}}</h4>
+      </div>
+    </div>
+    <div style="display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;">
+      <div style=" display: flex;
+      flex-direction: column;
+      flex-basis: 100%;">
+        <mat-progress-bar mode="determinate" value={{percentageLeft}}></mat-progress-bar>
+      </div>
+    </div>
+    </mat-card-actions>
+  </mat-card>
+
+
+
